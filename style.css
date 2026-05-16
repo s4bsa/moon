@@ -6,12 +6,12 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
   overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -21,68 +21,121 @@ body {
 h1 {
   color: white;
   margin-bottom: 60px;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .gift-box {
   position: relative;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   margin: auto;
   cursor: pointer;
   animation: bounce 1.5s infinite;
 }
 
+/* BOX */
+
 .box {
   position: absolute;
   bottom: 0;
-  width: 180px;
-  height: 130px;
-  background: #ff4d6d;
-  border-radius: 8px;
+  width: 200px;
+  height: 140px;
+  background: #ff2e63;
+  border-radius: 10px;
   overflow: hidden;
 }
 
+/* LID */
+
 .lid {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: -10px;
-  width: 200px;
+  width: 220px;
   height: 50px;
-  background: #ff758f;
-  border-radius: 8px;
+  background: #ff4f81;
+  border-radius: 10px;
   z-index: 2;
-  transition: 0.6s ease;
+  transition: 0.7s ease;
 }
+
+/* RIBBONS */
 
 .ribbon-vertical {
   position: absolute;
-  left: 75px;
+  left: 85px;
   width: 30px;
-  height: 130px;
-  background: #fff;
+  height: 140px;
+  background: white;
 }
 
 .ribbon-horizontal {
   position: absolute;
-  top: 50px;
-  width: 180px;
+  top: 55px;
+  width: 200px;
   height: 25px;
-  background: #fff;
+  background: white;
 }
 
+/* BOW */
+
+.bow {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.bow-left,
+.bow-right {
+  width: 60px;
+  height: 60px;
+  background: white;
+  position: absolute;
+  border-radius: 50% 50% 0 50%;
+}
+
+.bow-left {
+  transform: rotate(-35deg);
+  left: -50px;
+}
+
+.bow-right {
+  transform: rotate(125deg);
+  left: 10px;
+}
+
+.bow-center {
+  width: 24px;
+  height: 24px;
+  background: #ffe5ec;
+  border-radius: 50%;
+  position: absolute;
+  left: -7px;
+  top: 18px;
+}
+
+/* MESSAGE */
+
 .message {
-  margin-top: 40px;
+  margin-top: 50px;
   color: white;
   font-size: 2rem;
-  font-weight: bold;
   opacity: 0;
   transform: scale(0.5);
   transition: 0.6s ease;
 }
 
+/* OPEN EFFECT */
+
 .gift-box.open .lid {
-  transform: translateY(-90px) rotate(-20deg);
+  transform: translateY(-100px) rotate(-20deg);
+}
+
+.gift-box.open .bow {
+  transform: translateX(-50%) translateY(-100px) rotate(-20deg);
+  transition: 0.7s ease;
 }
 
 .message.show {
@@ -90,9 +143,11 @@ h1 {
   transform: scale(1);
 }
 
+/* BOUNCE */
+
 @keyframes bounce {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0px);
   }
 
   50% {
